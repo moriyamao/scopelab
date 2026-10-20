@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#182b24">
+<title>ScopeLab — Rehearse the edge cases</title>
+<meta name="description" content="Stress-test a product idea with interactive scenarios. Decide the business rules, then export an actionable brief and acceptance cases.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="app.css">
+<script src="engine.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#workspace">Skip to workspace</a>
+<aside class="sidebar" id="sidebar" aria-label="Workspace navigation">
+  <a class="brand" href="./" aria-label="ScopeLab home"><svg viewBox="0 0 38 38" aria-hidden="true"><path d="M7 7h11v11H7zM21 7h10v11H21zM7 21h11v10H7z"/><path d="M21 21h10v10H21z" class="brand-accent"/></svg><span>scope<span class="brand-light">lab</span><sup>β</sup></span></a>
+  <p class="sidebar-caption">A LITTLE FRICTION. A BETTER PRODUCT.</p>
+  <div class="workspace-badge"><span class="workspace-avatar">SL</span><div><strong>Local workspace</strong><span>Your ideas, on this device</span></div><span class="workspace-dot" aria-hidden="true"></span></div>
+  <p class="sidebar-label">WORKSPACE</p>
+  <nav class="view-nav" aria-label="Project views"><button type="button" data-view="lab" aria-current="page"><span class="nav-symbol" aria-hidden="true">⌘</span>Scenario lab<span class="nav-count">06</span></button><button type="button" data-view="decisions"><span class="nav-symbol" aria-hidden="true">☷</span>Decision log<span class="nav-count" id="decision-count">0</span></button><button type="button" data-view="handoff"><span class="nav-symbol" aria-hidden="true">↗</span>Developer handoff</button></nav>
+  <div class="sidebar-project"><p class="sidebar-label">CURRENT PROJECT</p><button type="button" id="edit-project" class="project-switch"><span class="project-folder" aria-hidden="true">▱</span><span id="sidebar-project-name">The last room problem</span><span aria-hidden="true">↗</span></button><button type="button" class="new-project" id="new-project">+ Start a new brief</button><button type="button" class="import-project" id="import-project">↥ Import a saved project</button><input type="file" id="project-file" accept=".json,application/json" hidden></div>
+  <div class="sidebar-bottom"><div class="help-card"><span class="help-spark" aria-hidden="true">✳</span><h2>Find the “what if.”</h2><p>Try the failure. Choose a rule.<br>Leave with a clearer plan.</p><button type="button" id="help-button">How ScopeLab works ↗</button></div><div class="storage-line"><span id="storage-dot" aria-hidden="true"></span><span id="storage-status">Saved on this device</span></div><button type="button" id="motion-button" aria-pressed="false">Pause animation</button><p class="version-note">SCENARIO LIBRARY / V0.1</p></div>
+</aside>
+<button type="button" class="drawer-backdrop" id="drawer-backdrop" aria-label="Close navigation" hidden></button>
+<div class="main-shell">
+  <header class="topbar"><button type="button" id="menu-button" aria-controls="sidebar" aria-expanded="false">☰ <span class="sr-only">Open navigation</span></button><div class="breadcrumbs"><span>Workspace</span><span>/</span><strong id="breadcrumb-view">Scenario lab</strong></div><div class="top-actions"><span class="draft-label"><span aria-hidden="true"></span> BROWSER DRAFT</span><button type="button" id="quick-export" class="button small dark">Export brief <span aria-hidden="true">↗</span></button></div></header>
+  <main id="workspace" tabindex="-1">
+    <noscript><div class="notice">ScopeLab needs JavaScript to run its local simulations. Enable it to use the workspace. Your draft stays in your browser.</div></noscript>
+    <div id="app"><div class="loading-state"><span class="loading-mark" aria-hidden="true">✳</span><h1>Opening the lab.</h1><p>Getting your scenarios ready.</p></div></div>
+  </main>
+  <footer class="app-footer"><span>THINK IT THROUGH. THEN BUILD IT.</span><span>Built by <a href="https://moriyamao.netlify.app/">Morish Macayan ↗</a></span></footer>
+</div>
+<dialog id="project-dialog" aria-labelledby="project-dialog-title"><form id="project-form"><div class="dialog-heading"><span class="eyebrow">THE STARTING POINT</span><button type="button" class="icon-button close-dialog" aria-label="Close project editor">×</button></div><h2 id="project-dialog-title">What are you building?</h2><p class="dialog-intro">Start with an idea. We’ll use a scenario pack to explore the decisions underneath it.</p><label>Project name<input id="project-name" name="name" maxlength="100" required></label><label>Simulation pack<select id="project-pack" name="pack"><option value="hotel">Hotel booking</option><option value="commerce">Online store</option><option value="appointments">Appointment booking</option></select></label><label>Your idea<textarea id="project-idea" name="idea" rows="4" maxlength="1400" required></textarea></label><p class="form-hint" id="project-form-hint">Starting a new brief replaces this browser’s current draft. Export your current project first if you want to keep it.</p><div class="dialog-actions"><button type="button" class="button ghost close-dialog">Cancel</button><button class="button orange" type="submit">Open the lab ↗</button></div></form></dialog>
+<dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><span class="eyebrow">A QUICK WALKTHROUGH</span><button type="button" class="icon-button close-dialog" aria-label="Close walkthrough">×</button></div><h2 id="help-title">Give your idea<br>a dress rehearsal.</h2><ol class="help-steps"><li><span>01</span><div><strong>Run the baseline.</strong><p>See how a deliberately incomplete workflow handles a difficult case.</p></div></li><li><span>02</span><div><strong>Choose and test a policy.</strong><p>Change a business rule, adjust the fixture, and inspect the resulting events.</p></div></li><li><span>03</span><div><strong>Save the decision. Export the plan.</strong><p>Build a brief with explicit rules, assumptions, acceptance cases, and open questions.</p></div></li></ol><div class="model-note">This version uses six deterministic scenarios in three named packs. Your idea text is saved with the brief; it does not generate new scenarios. Rehearsals specify behavior for developers to implement and test.</div><button type="button" class="button dark close-dialog">Let’s try it ↗</button></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
